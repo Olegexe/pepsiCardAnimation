@@ -1,0 +1,148 @@
+@import './utils/fonts.scss';
+@import './utils/vars.scss';
+@import './utils/reset.scss';
+@import './utils/mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&dispay=swap');
+
+body {
+    font-size: 16px;
+    line-height: 24px;
+    height: 100vh;
+}
+
+.container {
+    max-width: fit-content;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+}
+
+.image {
+  width: 60%;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  transition: all .3s ease-out;
+  z-index: 10;
+}
+
+.circle {
+  background-color: #d83133;
+  border-radius: 50%;
+  width: 230px;
+  height: 230px;
+  position: relative;
+  transition: all .3s ease-out;
+
+  &:hover {
+    width: 600px;
+    height: 350px;
+    background-color: #0065c3;
+    border-radius: 16px;
+  }
+
+  &:hover .image {
+    left: 75%;
+    width: 40%;
+  }
+  &:hover &__content {
+    visibility: visible;
+    animation: fade-left .4s ease-out;
+    animation-delay: .4s;
+    animation-fill-mode: both;
+  }
+
+  &__content {
+    overflow: hidden;
+    width: 45%;
+    color: #fff;
+    font-family: Poppins;
+    padding-left: 32px;
+    padding-top: 48px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
+
+  &__btn {
+    background-color: #fff;
+    color: #000;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+  }
+
+  
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@media screen and (max-width: 780px) { 
+  .circle {
+  
+    &:hover {
+      width: 350px;
+      height: 630px;
+      background-color: #0065c3;
+      border-radius: 16px;
+    }
+  
+    &:hover .image {
+      left: 50%;
+      top: 70%;
+      width: 50%;
+    }
+    &:hover &__content {
+      visibility: visible;
+      animation: fade .4s ease-out;
+      animation-delay: .4s;
+      animation-fill-mode: both;
+    }
+    &__content {
+      width: 100%;
+      height: 45%;
+    }
+  }
+}
